@@ -9,7 +9,7 @@ import hu.cubix.airport.service.PriceService;
 
 @SpringBootApplication
 public class AirportApplication implements CommandLineRunner {
-	
+	//test modification
 	@Autowired
 	PriceService priceService;
 
