@@ -1,9 +1,15 @@
 package hu.cubix.airport.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.PositiveOrZero;
+
 public class AirportDto {
 
+	@PositiveOrZero
 	private long id;
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private String iata;
 	
 	public AirportDto() {
