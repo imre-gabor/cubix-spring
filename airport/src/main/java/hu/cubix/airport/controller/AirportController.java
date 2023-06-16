@@ -1,14 +1,9 @@
 package hu.cubix.airport.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +18,6 @@ import hu.cubix.airport.dto.AirportDto;
 import hu.cubix.airport.mapper.AirportMapper;
 import hu.cubix.airport.model.Airport;
 import hu.cubix.airport.service.AirportService;
-import hu.cubix.airport.service.NonUniqueIataException;
 import jakarta.validation.Valid;
 
 @RestController
@@ -69,7 +63,7 @@ public class AirportController {
 	@PutMapping("/{id}")
 	public AirportDto update(@PathVariable long id, @RequestBody @Valid AirportDto airportDto
 			/*,BindingResult bindingResult*/) {		
-		airportDto = new AirportDto(airportDto.id(), airportDto.name(), airportDto.iata());
+		airportDto = new AirportDto(id, airportDto.name(), airportDto.iata());
 		Airport airport = airportMapper.dtoToAirport(airportDto);
 		Airport updatedAirport = airportService.update(airport);
 		
