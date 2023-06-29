@@ -29,6 +29,10 @@ public class Airport {
 	public Airport() {
 	}
 	
+	public Airport(String name, String iata) {
+		this(0, name, iata);
+	}
+	
 	public Airport(long id, String name, String iata) {
 		super();
 		this.id = id;
