@@ -1,6 +1,7 @@
 package hu.cubix.airport.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -59,6 +60,23 @@ public class Flight {
 	}
 	public void setTakeoffTime(LocalDateTime takeoffTime) {
 		this.takeoffTime = takeoffTime;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Flight other = (Flight) obj;
+		return id == other.id;
 	}
 	
 	
