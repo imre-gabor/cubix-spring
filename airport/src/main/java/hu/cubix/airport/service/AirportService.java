@@ -35,6 +35,10 @@ public class AirportService {
 	@Autowired
 	private FlightRepository flightRepository;
 	
+	@Autowired
+	private LogEntryService logEntryService;
+	
+	
 	@Transactional
 	public Airport create(Airport airport) {
 		if(findById(airport.getId()) != null) {
@@ -48,6 +52,7 @@ public class AirportService {
 		if(findById(airport.getId()) == null) {
 			return null;
 		}
+		logEntryService.logAirportChange(airport);
 		return save(airport);
 	}
 	
