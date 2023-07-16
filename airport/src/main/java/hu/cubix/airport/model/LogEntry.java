@@ -3,6 +3,8 @@ package hu.cubix.airport.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,6 +18,7 @@ public class LogEntry {
 	
 	private LocalDateTime ts;
 	private String description;
+	private String username;
 	
 	public LogEntry() {
 	}
@@ -24,6 +27,7 @@ public class LogEntry {
 	public LogEntry(String description) {
 		this.ts = LocalDateTime.now();
 		this.description = description;
+		this.username = SecurityContextHolder.getContext().getAuthentication().getName();
 	}
 
 
