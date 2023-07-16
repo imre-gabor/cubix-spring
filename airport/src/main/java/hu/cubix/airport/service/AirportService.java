@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -48,6 +49,7 @@ public class AirportService {
 	}
 	
 	@Transactional
+	@PreAuthorize("hasAuthority('admin')")
 	public Airport update(Airport airport) {
 		if(findById(airport.getId()) == null) {
 			return null;
