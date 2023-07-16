@@ -23,22 +23,22 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Bean
-	public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-		UserBuilder users = User.builder();
-		UserDetails user = users
-			.username("user")
-			.password(passwordEncoder.encode("pass"))
-			.authorities("user")
-			.build();
-		UserDetails admin = users
-			.username("admin")
-			.password(passwordEncoder.encode("pass"))
-			.authorities("user", "admin")
-			.build();
-		
-		return new InMemoryUserDetailsManager(user, admin);
-	}
+//	@Bean
+//	public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
+//		UserBuilder users = User.builder();
+//		UserDetails user = users
+//			.username("user")
+//			.password(passwordEncoder.encode("pass"))
+//			.authorities("user")
+//			.build();
+//		UserDetails admin = users
+//			.username("admin")
+//			.password(passwordEncoder.encode("pass"))
+//			.authorities("user", "admin")
+//			.build();
+//		
+//		return new InMemoryUserDetailsManager(user, admin);
+//	}
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
